@@ -1,0 +1,71 @@
+//appoach 1:
+#include <iostream>
+#include<algorithm>
+
+using namespace std;
+
+int main()
+{
+int n;
+cout<<"enter the number you want to insert";
+cin>>n;
+int a[n];
+for(int i=0;i<n;i++)
+{
+    cin>>a[i];
+}
+int k;
+cout<<"enter the value you want ";
+cin>>k;
+sort(a,a+n);
+cout<<a[k-1]<<endl;
+
+
+
+    return 0;
+}
+
+//approach 2:
+#include <iostream>
+#include<algorithm>
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+int main()
+{
+
+int n;
+cout<<"enter the number you want to insert";
+cin>>n;
+int a[n];
+for(int i=0;i<n;i++)
+{
+    cin>>a[i];
+}
+int k;
+cout<<"enter the value you want ";
+cin>>k;
+priority_queue<int,vector<int>,greater<int>>p;
+for(int i=0;i<n;i++)
+{
+    p.push(a[i]);
+}
+int ans,i=1;
+while(!p.empty())
+{
+    if(i==k)
+    {
+        ans=p.top();
+        break;
+        
+    }
+    i++;
+    p.pop();
+}
+cout<<ans<<"\n";
+
+
+    return 0;
+}
