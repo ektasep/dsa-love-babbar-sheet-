@@ -1,0 +1,148 @@
+//APPROACH 1:time complexit  (O(n^3))
+
+
+#include <iostream>
+#include <climits>
+
+
+using namespace std;
+
+int main()
+{
+
+int n;
+cout<<"enter the number you want to insert in  array";
+cin>>n;
+
+int a[n+1];
+
+for(int i=1;i<=n;i++)
+{
+    cout<<"enter the  array ";
+    cin>>a[i];
+    
+}
+int max=INT_MIN;
+
+for(int i=1;i<=n;i++)
+{
+    for(int j=i;j<=n;j++)
+    {
+        int sum=0;
+        for(int k=i;k<=j;k++){
+            sum=sum+a[k];
+        }
+        if(sum>max)
+        {
+            max=sum;
+        }
+
+    }
+}
+cout<<max;
+ 
+return 0;
+}
+
+//APPROACH 2:time complexit  (O(n^2))
+
+#include <iostream>
+#include <climits>
+
+
+using namespace std;
+
+int main()
+{
+
+int n,sum;
+
+cout<<"enter the number you want to insert in  array";
+cin>>n;
+
+int a[n+1];
+
+for(int i=1;i<=n;i++)
+{
+    cout<<"enter the  array ";
+    cin>>a[i];
+    
+}
+
+
+int pre[n+1];
+pre[0]=0;
+for(int i=1;i<=n;i++)
+{
+    pre[i]=pre[i-1]+a[i];
+}
+int max=INT_MIN;
+
+for(int i=1;i<=n;i++)
+{
+    for(int j=i;j<=n;j++)
+    {
+        sum =pre[j]-pre[i-1];
+        }
+        if(sum>max)
+        {
+            max=sum;
+        }
+
+    }
+
+cout<<max;
+ 
+return 0;
+}
+
+
+//APPROACH 3:time complexit  (O(n))
+
+#include <iostream>
+#include <climits>
+
+
+using namespace std;
+
+int main()
+{
+
+int n,sum;
+
+cout<<"enter the number you want to insert in  array";
+cin>>n;
+
+int a[n+1];
+
+for(int i=1;i<=n;i++)
+{
+    cout<<"enter the  array ";
+    cin>>a[i];
+    
+}
+
+
+
+int max=INT_MIN;
+int max_till_here=0;
+
+
+for(int i=1;i<=n;i++)
+{
+    max_till_here+=a[i];
+    if(max_till_here>max)
+    {
+        max=max_till_here;
+    }
+    if(max_till_here<0)
+    {
+        max_till_here=0;
+    }
+
+}
+
+cout<<max;
+ 
+return 0;
+}
